@@ -66,7 +66,6 @@ class ValueIterationAgent(ValueEstimationAgent):
             new_values = util.Counter()
             for state in self.mdp.getStates():
                 best_action = self.getAction(state)
-                print(best_action)
                 if best_action == None:
                     continue
                 new_values[state] = self.getQValue(state, best_action)
@@ -103,7 +102,6 @@ class ValueIterationAgent(ValueEstimationAgent):
         if self.mdp.isTerminal(state):
             return None
         actions = self.mdp.getPossibleActions(state)
-        print(actions)
         return max(actions, key=(lambda acc : self.getQValue(state, acc)))
 
     def getPolicy(self, state):
